@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineMax } from 'gsap';
+import { TimelineMax, TweenMax } from 'gsap';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
    menu = new TimelineMax({paused:true, reversed:true});
 
   ngOnInit(){
-    this.createMenuAnim()
+    this.createMenuAnim();
   }
 
   createMenuAnim(){
@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
   }
   
   menuClick() {
-    this.menu.reversed() ? this.menu.play() : this.menu.reverse();	
+    this.menu.reversed() ? 
+    (this.menu.play(), TweenMax.to("#myID", .5, {backgroundColor:"#ff0000"})) : (this.menu.reverse(), TweenMax.to("#myID", .5, {backgroundColor:"#ffffff"}));	
     return console.log('clicked');
    }
 }
