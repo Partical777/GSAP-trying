@@ -8,16 +8,21 @@ import { TimelineMax, TweenMax } from 'gsap';
 })
 export class AppComponent implements OnInit {
   //  menu = new TimelineMax({repeat:3, repeatDelay:1});
-  redText1 = new TimelineMax({repeat:-1, repeatDelay:1});
-  redText2 = new TimelineMax({repeat:-1, repeatDelay:1});
+  logo = new TimelineMax({repeat:-1, repeatDelay:1});
 
   ngOnInit(){
     // this.createMenuAnim();
     // TweenMax.from("#myID", 1, {x: 300});
-    this.redText1.to(".redText1", .25, {scale: 1.5})
-    .to(".redText1", .75, {scale: 1});
-    this.redText2.to(".redText2", .25, {scale: 1.5})
-    .to(".redText2", .75, {scale: 1});
+    this.logo
+    .from(".cuteBird", 2, {x: 75, delay:1, ease: Power4.easeOut})
+    .from(".englandAndCarelineText", 2, {x: -50, opacity: 0, ease: Power4.easeOut}, "-=1.75")
+    .addLabel("redTextJumpOut")
+    .to(".redText1", .5, {scale: 1.25, fill: "#C6576A", ease: Back.easeOut.config(1.7)}, "redTextJumpOut")
+    .to(".redText2", .5, {scale: 1.25, fill: "#C6576A", ease: Back.easeOut.config(1.7)}, "redTextJumpOut")
+    .addLabel("redTextBack")
+    .to(".redText1", .5, {scale: 1}, "redTextBack")
+    .to(".redText2", .5, {scale: 1}, "redTextBack")
+    .from(".bottomText", 2, {y: -20, opacity: 0, ease: Power4.easeOut});
   }
 
   // createMenuAnim(){
