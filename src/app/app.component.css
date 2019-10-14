@@ -1,3 +1,8 @@
 p {
   font-family: Lato;
 }
+
+.bomb-bigA,.bomb-midA,.bomb-smallA,.bomb-bigB,.bomb-midB,.bomb-smallB {
+  fill: #C6576A;
+  opacity: 0;
+}
